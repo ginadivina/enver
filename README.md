@@ -8,6 +8,12 @@ To get started:
 
 Install nodemon if you dont already have it.
 ### `npm i nodemon - g`
+Install MongoDB locally
+[https://docs.mongodb.com/manual/administration/install-community/](https://docs.mongodb.com/manual/administration/install-community/)
+
+If on Windows, add MongoDB to path
+[https://dangphongvanthanh.wordpress.com/2017/06/12/add-mongos-bin-folder-to-the-path-environment-variable/](https://dangphongvanthanh.wordpress.com/2017/06/12/add-mongos-bin-folder-to-the-path-environment-variable/)
+
 Install dependencies with Yarn. (If you dont have Yarn, install it here: [https://yarnpkg.com/lang/en/docs/install/#windows-stable](https://yarnpkg.com/lang/en/docs/install/#windows-stable))
 ### `yarn`
 To start the React app and run the server at the same time.
