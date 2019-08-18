@@ -1,13 +1,18 @@
 import React, {Component} from "react";
 import { Button, Steps } from "antd";
 
-import { TitleForm } from "./forms/question/TitleForm";
+import { TitleForm, BodyForm, ReviewForm } from "./forms/question/QuestionForm";
 
 const { Step } = Steps;
 
 class Stepper extends Component {
 
   state = {
+    question: {
+      title: "",
+      body: "",
+      code: "",
+    },
     current: 0,
     maxSteps: 3,
     steps: [
@@ -17,11 +22,11 @@ class Stepper extends Component {
       },
       {
         title: "body",
-        content: "content",
+        content: <BodyForm />,
       },
       {
         title: "review",
-        content: "content",
+        content: <ReviewForm />,
       },
     ]
   };
