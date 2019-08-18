@@ -18,7 +18,6 @@ const QuestionForm = (props) => {
       <Form onSubmit={handleSubmit}>
         <Input name="title" placeholder="What is it you need help with?" />
         <TextArea name="body" rows={4} placeholder="Describe Your issue."/>
-        <TextArea name="code" rows={4} placeholder="Paste your code into here."/>
         <Button name="submit" htmlType="submit" value="Submit"/>
       </Form>
     </>
