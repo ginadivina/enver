@@ -5,6 +5,7 @@
   "start": "node server.js",
   "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
   "dependencies": {
+    "@moneybutton/api-client": "^0.24.0",
     "antd": "^3.22.0",
     "axios": "^0.19.0",
     "react": "^16.9.0",

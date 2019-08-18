@@ -1,9 +1,7 @@
-import Stepper from "./Stepper"
 import { MoneyButtonClient } from '@moneybutton/api-client'
 import React, { Component} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import OathCallback from "./OathCallback";
-import Header from "antd/es/calendar/Header";
 // const cors = require('cors');
 // const express = require('express');
 // const responseTime = require('response-time');
@@ -78,7 +76,7 @@ class App extends Component {
         </header>
       <Router>
         {/* <Route path="/" component={}> */}
-        <Route path="/question/new" component={Stepper}/>
+        <Route path="/question/new" component={QuestionForm}/>
         <Route path="/oauthCallback" component={OathCallback}/>
       </Router>
 
