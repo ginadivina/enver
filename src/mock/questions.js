@@ -9,6 +9,7 @@ const discussions = [
         'code': 'console.log(`Hello World`)',
         'tags': ['python'],
         'pinned': true,
+        'payOut': 0.001,
     },
     {
         // 'forum_id': '58c23d2efce8810b6f20b0b3',
@@ -20,6 +21,7 @@ const discussions = [
         'code': 'console.log(`Hello World`)',
         'tags': ['python'],
         'pinned': true,
+        'payOut': 0.002,
     },
     {
         // 'forum_id': '58c23d2efce8810b6f20b0b3',
@@ -31,6 +33,7 @@ const discussions = [
         'code': 'console.log(`Hello World`)',
         'tags': ['kali-linux', 'john-the-ripper'],
         'pinned': false,
+        'payOut': 0.0015,
     },
 ];
 

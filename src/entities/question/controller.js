@@ -43,6 +43,7 @@ const createQuestion = (question) => {
             code: question.code,
             tags: ['test'],
             pinned: false,
+            payOut: question.payOut,
         });
 
         newQuestion
@@ -50,7 +51,10 @@ const createQuestion = (question) => {
                 console.log(newQuestion);
                 if (error) { console.log(error); reject(error); }
                 else {
-                    resolve("New question posted");
+                    resolve({
+                        "success": true,
+                        "question_id": newQuestion._id
+                    });
                 }
             })
 

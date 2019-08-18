@@ -10,6 +10,7 @@ const questionSchema = mongoose.Schema({
     code: Object,
     tags: Array,
     pinned: Boolean,
+    payOut: Number,
 });
 
 module.exports = mongoose.model('question', questionSchema);
