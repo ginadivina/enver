@@ -13,7 +13,7 @@ class Stepper extends Component {
     steps: [
       {
         title: "question",
-        content: TitleForm,
+        content: <TitleForm />,
       },
       {
         title: "body",
@@ -49,7 +49,7 @@ class Stepper extends Component {
             <Step key={item.title} title={item.title} />
           ))}
         </Steps>
-        <div>{steps[current].content}</div>
+        {steps[current].content}
 
         <Button 
         onClick={this.onPreviousClick}
