@@ -1,17 +1,7 @@
-import React, {Component} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import 'antd/dist/antd.css';
 
-class App extends Component {
-
-  render () {
-    return(
-      <>
-        <h1>
-          A whole new app!
-        </h1>
-      </>
-    )
-  }
-}
+import App from "./components/App";
 
 ReactDOM.render(<App/>, document.querySelector("#root"));
