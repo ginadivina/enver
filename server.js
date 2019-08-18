@@ -7,7 +7,7 @@ const path = require('path');
 // Import routes
 const userRoutes = require('./src/entities/user/api');
 const forumRoutes = require('./src/entities/forum/api');
-const postRoutes = require('./src/entities/post/api');
+const questionRoutes = require('./src/entities/question/api');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 userRoutes(app);
 forumRoutes(app);
-postRoutes(app);
+questionRoutes(app);
 
 app.get('/api/hello', (req, res) => {
     res.send({ express: 'Hello From Express' });
