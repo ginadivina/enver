@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@moneybutton/api-client": "^0.24.0",
+    "@moneybutton/react-money-button": "^0.24.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "history": "^4.9.0",
