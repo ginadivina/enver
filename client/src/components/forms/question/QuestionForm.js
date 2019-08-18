@@ -3,17 +3,18 @@ import { Input } from "antd";
 
 const { TextArea } = Input;
 
-export const TitleForm = () => {
+export const TitleForm = (props) => {
+  console.log(props);
   return (
-    <Input placeHolder="What is it you need help with?"/>
+    <Input placeholder="What is it you need help with?" onChange={console.log(value)}/>
   )
 };
 
 export const BodyForm = () => {
   return (
     <>
-    <TextArea rows={4} placeHolder="Describe Your issue."/>
-    <TextArea rows={4} placeHolder="Paste your code into here."/>
+    <TextArea rows={4} placeholder="Describe Your issue."/>
+    <TextArea rows={4} placeholder="Paste your code into here."/>
   </>
   )
 };
