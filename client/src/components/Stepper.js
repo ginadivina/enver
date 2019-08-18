@@ -1,34 +1,18 @@
 import React, {Component} from "react";
 import { Button, Steps } from "antd";
+import { connect } from "react-redux";
 
-import { TitleForm, BodyForm, ReviewForm } from "./forms/question/QuestionForm";
+import TitleForm from "./forms/question/TitleForm";
+import BodyForm from "./forms/question/BodyForm";
+import ReviewForm from "./forms/question/ReviewForm";
 
 const { Step } = Steps;
 
 class Stepper extends Component {
 
   state = {
-    question: {
-      title: "",
-      body: "",
-      code: "",
-    },
     current: 0,
     maxSteps: 3,
-    steps: [
-      {
-        title: "question",
-        content: <TitleForm updateTitle={this.onTitleChange}/>,
-      },
-      {
-        title: "body",
-        content: <BodyForm />,
-      },
-      {
-        title: "review",
-        content: <ReviewForm />,
-      },
-    ]
   };
 
   onPreviousClick = () => {
@@ -42,14 +26,28 @@ class Stepper extends Component {
     this.setState({current: newValue});
   }
 
-  onTitleChange(value) {
-    console.log("changing state");
+  onTitleChange = (value) => {
     this.setState({title: value});
   }
 
   render(){
-    const { steps, current } = this.state;
 
+    const steps = [
+      {
+        title: "question",
+        content: <TitleForm />,
+      },
+      {
+        title: "body",
+        content: <BodyForm />,
+      },
+      {
+        title: "review",
+        content: <ReviewForm />,
+      },
+    ];
+
+    const {current } = this.state;
     return (
       <>
         <Steps size="small" current={current}>
@@ -73,4 +71,10 @@ class Stepper extends Component {
   }
 }
 
-export default Stepper;
+const mapStateToProps = (state) => {
+  return{
+    question: state.question
+  }
+}
+
+export default connect(mapStateToProps)(Stepper);

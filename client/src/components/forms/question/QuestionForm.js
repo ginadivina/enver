@@ -1,28 +1,34 @@
 import React from "react";
-import { Input } from "antd";
+import { Button, Input, Form } from "antd";
+import { connect } from "react-redux";
 
-const { TextArea } = Input;
+const {TextArea} = Input;
 
-export const TitleForm = (props) => {
-  console.log(props);
-  return (
-    <Input placeholder="What is it you need help with?" onChange={console.log(value)}/>
-  )
-};
+const QuestionForm = (props) => {
 
-export const BodyForm = () => {
-  return (
-    <>
-    <TextArea rows={4} placeholder="Describe Your issue."/>
-    <TextArea rows={4} placeholder="Paste your code into here."/>
-  </>
-  )
-};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(event.target);
+    const data = new FormData(event.target);
+  }
 
-export const ReviewForm = () => {
   return (
     <>
-
+      <h1>New Question</h1>
+      <Form onSubmit={handleSubmit}>
+        <Input name="title" placeholder="What is it you need help with?" />
+        <TextArea name="body" rows={4} placeholder="Describe Your issue."/>
+        <TextArea name="code" rows={4} placeholder="Paste your code into here."/>
+        <Button name="submit" htmlType="submit" value="Submit"/>
+      </Form>
     </>
   )
 };
+
+const mapStateToProps = (state) => {
+  return{
+    question: state.question
+  }
+} 
+
+export default connect(mapStateToProps)(QuestionForm);

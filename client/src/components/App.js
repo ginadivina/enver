@@ -1,7 +1,7 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Stepper from "./Stepper"
+import QuestionForm from "./forms/question/QuestionForm";
 
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
     return(
       <Router>
         {/* <Route path="/" component={}> */}
-        <Route path="/question/new" component={Stepper}/>
+        <Route path="/question/new" component={QuestionForm}/>
       </Router>
     )
   }
