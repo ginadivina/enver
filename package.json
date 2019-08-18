@@ -1,5 +1,5 @@
 {
-  "name": "enver",
+  "name": "client",
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && yarn start",
@@ -9,10 +9,14 @@
   "dependencies": {
     "@moneybutton/api-client": "^0.24.0",
     "@moneybutton/react-money-button": "^0.24.0",
+    "antd": "^3.22.0",
     "body-parser": "^1.18.3",
+    "bsv": "^0.29.2",
     "express": "^4.16.4",
     "history": "^4.9.0",
     "nodemon": "^1.19.1",
+    "react": "^16.9.0",
+    "react-scripts": "^3.1.1",
     "yarn": "^1.17.3"
   },
   "devDependencies": {

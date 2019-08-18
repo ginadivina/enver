@@ -18,9 +18,8 @@ export default class Oauth extends React.Component {
         moneyButtonClient = new MoneyButtonClient(
             OAUTH_IDENTIFIER
         )
-        await moneyButtonClient.handleAuthorizationResponse()
-        const moneyButtonId = await moneyButtonClient.getIdentity()
-        console.log(moneyButtonId)
+        await moneyButtonClient.handleAuthorizationResponse();
+        const moneyButtonId = await moneyButtonClient.getIdentity();
     }
 
     render () {
