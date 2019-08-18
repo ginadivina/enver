@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import { Button, Steps } from "antd";
 
+import { TitleForm } from "./forms/question/TitleForm";
+
 const { Step } = Steps;
 
 class Stepper extends Component {
@@ -8,7 +10,23 @@ class Stepper extends Component {
   state = {
     current: 0,
     maxSteps: 3,
+    steps: [
+      {
+        title: "question",
+        content: TitleForm,
+      },
+      {
+        title: "body",
+        content: "content",
+      },
+      {
+        title: "review",
+        content: "content",
+      },
+    ]
   };
+
+  
 
   onPreviousClick = () => {
     const newValue = this.state.current > 0 ? this.state.current - 1 : this.state.current;
@@ -22,14 +40,17 @@ class Stepper extends Component {
   }
 
   render(){
+    const { steps, current } = this.state;
 
     return (
       <>
-        <Steps size="small" current={this.state.current}>
-          <Step title="Question" />
-          <Step title="Body" />
-          <Step title="Review" />
+        <Steps size="small" current={current}>
+          {steps.map(item => (
+            <Step key={item.title} title={item.title} />
+          ))}
         </Steps>
+        <div>{steps[current].content}</div>
+
         <Button 
         onClick={this.onPreviousClick}
         >
