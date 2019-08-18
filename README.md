@@ -19,6 +19,11 @@ Install dependencies with Yarn. (If you dont have Yarn, install it here: [https:
 To start the React app and run the server at the same time.
 ### `yarn dev`
 Visit [http://localhost:5000/api/hello](http://localhost:5000/api/hello) for the server. Visit [http://localhost:3000/](http://localhost:3000/) for the React app.
+
+## Help (from Enver team)
+If running into an issue with `yarn add bitquery` run `yarn add bitquery --ignore-scripts` to disable the post install script
+that runs for installing dependency `bigjq`
+
 ## Other scripts
 
 ### `npm test`

@@ -4,7 +4,6 @@ import NavBar from './NavBar/NavBar';
 import LandingPage from './LandingPage/LandingPage';
 import Stepper from "./Stepper"
 
-
 class App extends Component {
 
   render () {

@@ -7,10 +7,14 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
+    "bitquery": "^0.3.138",
     "body-parser": "^1.18.3",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
+    "mongodb": "^3.3.0",
     "mongoose": "^5.6.9",
+    "neonplanaria": "^0.0.38",
+    "node-jq": "1.5.0",
     "validator": "^11.1.0",
     "yarn": "^1.17.3"
   },
