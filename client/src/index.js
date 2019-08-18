@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {BrowserRouter} from 'react-router-dom';
+import App from "./components/App";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./reducers/rootReducer"
 import 'antd/dist/antd.css';
 
-import App from "./components/App";
+const store = createStore(rootReducer);
 
-ReactDOM.render(
-    <BrowserRouter>
-    <App/>
-    </BrowserRouter>
-    , document.querySelector("#root")
+ReactDOM.render(<Provider store={store}><App/></Provider>,document.querySelector("#root"),
 );
