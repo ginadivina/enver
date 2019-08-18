@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
-
+Dependencies:
+### `Node 10+`
 To get started:
 
 Install nodemon if you dont already have it.
