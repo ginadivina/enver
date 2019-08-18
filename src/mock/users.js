@@ -1,23 +1,15 @@
 const users = [
     {
-        'username': 'testuser1',
+        'username': 'Bryce',
         'avatarURL': 'http://flathash.com/enver1',
     },
     {
-        'username': 'testuser2',
+        'username': 'Georgina',
         'avatarURL': 'http://flathash.com/enver2',
     },
     {
-        'username': 'testuser3',
+        'username': 'Harry',
         'avatarURL': 'http://flathash.com/enver3',
-    },
-    {
-        'username': 'testuser4',
-        'avatarURL': 'http://flathash.com/enver4',
-    },
-    {
-        'username': 'testuser5',
-        'avatarURL': 'http://flathash.com/enver5',
     },
 ];
 
