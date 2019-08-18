@@ -11,6 +11,9 @@ import OathCallback from "./OathCallback";
  *
  */
 import QuestionForm from "./forms/question/QuestionForm";
+import NavBar from './NavBar/NavBar';
+import LandingPage from './LandingPage/LandingPage';
+import Stepper from "./Stepper"
 
 
 
@@ -52,6 +55,9 @@ class App extends Component {
   render () {
     return(
         <>
+        <NavBar/>
+        <LandingPage/>
+        <h1> Enver Overflow >:D </h1>
         <header>
             {
                 user !== null ? (
