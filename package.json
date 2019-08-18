@@ -3,21 +3,22 @@
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && yarn start",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
-    "@moneybutton/api-client": "^0.24.0",
-    "@moneybutton/react-money-button": "^0.24.0",
-    "antd": "^3.22.0",
+    "bitquery": "^0.3.138",
     "body-parser": "^1.18.3",
+    "dotenv": "^8.0.0",
     "bsv": "^0.29.2",
     "express": "^4.16.4",
+    "mongodb": "^3.3.0",
+    "mongoose": "^5.6.9",
+    "neonplanaria": "^0.0.38",
+    "node-jq": "1.5.0",
+    "validator": "^11.1.0",
     "history": "^4.9.0",
     "nodemon": "^1.19.1",
-    "react": "^16.9.0",
-    "react-background-image": "^1.2.0",
-    "react-scripts": "^3.1.1",
     "yarn": "^1.17.3"
   },
   "devDependencies": {

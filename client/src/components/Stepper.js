@@ -15,6 +15,8 @@ class Stepper extends Component {
     maxSteps: 3,
   };
 
+  
+
   onPreviousClick = () => {
     const newValue = this.state.current > 0 ? this.state.current - 1 : this.state.current;
     this.setState({current: newValue});

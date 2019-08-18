@@ -1,6 +1,14 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+
+// Import routes
+const Planaria = require('./src/planaria');
+const userRoutes = require('./src/entities/user/api');
+const forumRoutes = require('./src/entities/forum/api');
+const questionRoutes = require('./src/entities/question/api');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -8,7 +16,12 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// API calls
+// Routes
+
+userRoutes(app);
+forumRoutes(app);
+questionRoutes(app);
+
 app.get('/api/hello', (req, res) => {
     res.send({ express: 'Hello From Express' });
 });
@@ -30,4 +43,6 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
