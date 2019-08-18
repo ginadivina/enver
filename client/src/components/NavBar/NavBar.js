@@ -22,6 +22,15 @@ function NavBar() {
             console.error(err)
         }
     }
+    let handleNavAsk = () => {
+        window.location = "/question/new"
+    }
+    let handleNavMain = () => {
+        window.location = "/"
+    }
+    let handleSelected = () => {
+            return (window.location.pathname  === '/' ? 1 : 2).toString()
+    }
     return (
         <div>
     <Layout>
@@ -30,11 +39,12 @@ function NavBar() {
         <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['2']}
+
+            defaultSelectedKeys={[handleSelected()]}
             style={{ lineHeight: '64px' }}
         >
-            <Menu.Item key="1">Home</Menu.Item>
-            <Menu.Item key="2">Ask</Menu.Item>
+            <Menu.Item key="1" onClick={handleNavMain}>Home</Menu.Item>
+            <Menu.Item key="2" onClick={handleNavAsk}>Ask</Menu.Item>
             {/*Need to set disable when logged in*/}
             <Menu.Item key="3" onClick={linkWithMoneyButton}>Log in</Menu.Item>
         </Menu>

@@ -1,6 +1,6 @@
 import { MoneyButtonClient, AuthError as MoneyButtonAuthError } from '@moneybutton/api-client'
 import React from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 /**
  *
@@ -20,6 +20,7 @@ export default class Oauth extends React.Component {
         )
         await moneyButtonClient.handleAuthorizationResponse();
         const moneyButtonId = await moneyButtonClient.getIdentity();
+        window.location = '/'
     }
 
     render () {

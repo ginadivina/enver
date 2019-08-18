@@ -14,6 +14,10 @@ let moneyButtonClient = null;
 let user = null;
 let namespace = '1HUqKEetMXpByShDnybNNGBhZMcTjtE6RG';
 
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 export default class questionForm extends React.Component {
   state = {
       title: "",
@@ -33,6 +37,11 @@ export default class questionForm extends React.Component {
 
   }
 
+   async handleOnPayment () {
+      await sleep(4000);
+      window.location = '/'
+  }
+
 
 
   render () {
@@ -47,17 +56,23 @@ export default class questionForm extends React.Component {
         console.log(this.state.script.toString());
     }
 
+
     return(
         <>
           <h1>New Question</h1>
           {/*<Form onSubmit={handleSubmit}>*/}
-          <Input name="title"  placeholder="What is it you need help with?" onChange={event => this.setState({title: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
-          <TextArea name="body" rows={4} placeholder="Describe Your issue." onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+          <div>
+          <Input name="title" style={{width: "50%", marginLeft:'25%', marginTop:"1%", zIndex: 1}} placeholder="What is it you need help with?" onChange={event => this.setState({title: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+          </div>
+            <div>
+          <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={10} placeholder="Describe Your issue." onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+            </div>
           {/*<TextArea name="code" rows={4} placeholder="Describe Your issue." onChange={event => setCode(event.target.value)}/>*/}
           {/*  <Button name="submit" type="default" htmlType="submit" value="Submit">Set Post</Button>*/}
           {/*</Form>*/}
-          <div>
+          <div style={{ marginLeft:'47%', zIndex: 1}}>
             <MoneyButton
+
                 label={"Submit"}
                 outputs={[{
                   'userId':this.state.u,
@@ -67,9 +82,10 @@ export default class questionForm extends React.Component {
                 },
                   {
                     'paymail': "9552@moneybutton.com",
-                    'amount': "0.2",
+                    'amount': "0.01",
                     'currency': "USD"
                   }]}
+                onPayment={this.handleOnPayment}
             />
           </div>
 
