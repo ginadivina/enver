@@ -6,7 +6,7 @@ const { TextArea } = Input;
 export const TitleForm = (props) => {
   console.log(props);
   return (
-    <Input placeholder="What is it you need help with?" onChange={console.log(value)}/>
+    <Input placeholder="What is it you need help with?" onChange={console.log('hi')}/>
   )
 };
 
