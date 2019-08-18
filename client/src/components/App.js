@@ -1,5 +1,7 @@
 import React, { Component} from "react";
 
+import NavBar from './NavBar/NavBar';
+import LandingPage from './LandingPage/LandingPage';
 import Stepper from "./Stepper"
 
 
@@ -7,12 +9,12 @@ class App extends Component {
 
   render () {
     return(
-      <>
+      <div>
+          <NavBar/>
+          <LandingPage/>
+          <h1> Enver Overflow >:D </h1>
         <Stepper />
-        <h1>
-          A whole new app!
-        </h1>
-      </>
+      </div>
     )
   }
 }
