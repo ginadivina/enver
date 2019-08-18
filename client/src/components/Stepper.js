@@ -18,7 +18,7 @@ class Stepper extends Component {
     steps: [
       {
         title: "question",
-        content: <TitleForm updateTitle={this.onTitleChange}/>,
+        content: <TitleForm />,
       },
       {
         title: "body",
@@ -31,6 +31,8 @@ class Stepper extends Component {
     ]
   };
 
+  
+
   onPreviousClick = () => {
     const newValue = this.state.current > 0 ? this.state.current - 1 : this.state.current;
     this.setState({current: newValue});
@@ -40,11 +42,6 @@ class Stepper extends Component {
     const { maxSteps } = this.state;
     const newValue = this.state.current < maxSteps ? this.state.current + 1 : this.state.current;
     this.setState({current: newValue});
-  }
-
-  onTitleChange(value) {
-    console.log("changing state");
-    this.setState({title: value});
   }
 
   render(){

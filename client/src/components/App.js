@@ -1,5 +1,4 @@
 import React, { Component} from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Stepper from "./Stepper"
 
@@ -8,10 +7,12 @@ class App extends Component {
 
   render () {
     return(
-      <Router>
-        {/* <Route path="/" component={}> */}
-        <Route path="/question/new" component={Stepper}/>
-      </Router>
+      <>
+        <Stepper />
+        <h1>
+          A whole new app!
+        </h1>
+      </>
     )
   }
 }
