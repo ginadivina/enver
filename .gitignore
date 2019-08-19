@@ -28,3 +28,5 @@ yarn.lock
 client/node_modules/
 
 bus/
+
+tape.txt

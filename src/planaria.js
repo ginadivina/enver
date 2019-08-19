@@ -1,14 +1,8 @@
 const {planaria, planarium} = require('neonplanaria');
 const bitquery = require('bitquery');
-const MongoClient = require('mongodb')
+const MongoClient = require('mongodb');
 const mongoose = require('mongoose');
-const mongo_db = require('./database.js');
-
-const tx = mongoose.model('tx', mongoose.Schema({
-    tx_id: mongoose.Schema.ObjectId,
-    // forum_id: { type: mongoose.Schema.ObjectId, ref: 'forum' },
-    tx: String
-}));
+const Question = require('./entities/question/model');
 
 const connect = function(cb) {
     MongoClient.connect("mongodb://localhost:27017", {useNewUrlParser: true}, function(err, client) {
@@ -22,7 +16,7 @@ const connect = function(cb) {
             cb();
         }
     })
-}
+};
 
 planarium.start({
     name: "planaria",
@@ -42,22 +36,38 @@ planarium.start({
             e.res.json([])
         }
     }
-})
+});
 
 planaria.start({
     filter: {
         "from": 60000,
         "q": {
-            "find": {"out.s1": "1LtyME6b5AnMopQrBPLk4FGN8UBuhxKqrn"},
-            "project": { "out.s2": 1, "out.s3": 1 }
-        },
-        "limit": 10
+            "find": {"out.s2": "1HUqKEetMXpByShDnybNNGBhZMcTjtE6RG"}
+        }
     },
-    onmempool: async function (e) {
+
+    onmempool: async function (e) {  // Save full unconfirmed transactions in separate collection
         await db.collection("u").insertMany([e.tx])
     },
+
     onblock: async function (e) {
-        await db.collection("c").insertMany(e.tx)
+        tx = JSON.parse(e.tx);
+        tx.forEach(function (question) {
+            data = JSON.parse(question.out[0].s3);
+            confirmed = new Question({
+                username: data.u,
+                date: Date.now(),
+                title: data.t,
+                body: data.b,
+                code: '',
+                tags: [],
+                pinned: false,
+                payOut: 0.0001,
+            });
+
+            confirmed.save();  // Save parsed transaction to questions collection
+        });
+        await db.collection("c").insertMany(e.tx)  // Save full transaction to separate collection
     },
     onstart: function (e) {
         return new Promise(async function (resolve, reject) {

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const url = process.env.DATABASE_URL;
 
+// MongoDB connection
 class Database {
     constructor() {
         this._connect()
