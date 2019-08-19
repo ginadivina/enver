@@ -9,7 +9,7 @@ const Planaria = require('./src/planaria');
 const userRoutes = require('./src/entities/user/api');
 const forumRoutes = require('./src/entities/forum/api');
 const questionRoutes = require('./src/entities/question/api');
-
+const mongo_db = require('./src/database.js');
 const app = express();
 const port = process.env.PORT || 5000;
 

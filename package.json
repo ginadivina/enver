@@ -7,18 +7,21 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
+    "@moneybutton/react-money-button": "^0.24.0",
+    "axios": "^0.19.0",
     "bitquery": "^0.3.138",
     "body-parser": "^1.18.3",
-    "dotenv": "^8.0.0",
     "bsv": "^0.29.2",
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
+    "history": "^4.9.0",
     "mongodb": "^3.3.0",
     "mongoose": "^5.6.9",
     "neonplanaria": "^0.0.38",
     "node-jq": "1.5.0",
-    "validator": "^11.1.0",
-    "history": "^4.9.0",
     "nodemon": "^1.19.1",
+    "uuid": "^3.3.2",
+    "validator": "^11.1.0",
     "yarn": "^1.17.3"
   },
   "devDependencies": {
