@@ -1,12 +1,12 @@
-import React, {useState} from "react";
-import { Button, Input, Form } from "antd";
-import { connect } from "react-redux";
+import React from "react";
+import {Input, Row} from "antd";
 import MoneyButton from '@moneybutton/react-money-button'
 import {MoneyButtonClient} from "@moneybutton/api-client";
-import Text from "antd/es/typography/Text";
+import questions from './undraw_post_online_dkuk.svg';
+import bitcoinsv from "../../bitcoin-sv-1.svg";
+
 let bsv = require('bsv');
 const uuidv4 = require('uuid/v4');
-
 
 const {TextArea} = Input;
 const OAUTH_IDENTIFIER = '116d2d894e5052b0394f45a865fb4d28';
@@ -62,21 +62,29 @@ export default class questionForm extends React.Component {
 
     return(
         <>
-          <h1>New Question</h1>
+
           {/*<Form onSubmit={handleSubmit}>*/}
           <div>
+              <h2 style={{width: "50%", marginLeft:'25%', marginTop:"1%", zIndex: 1}}>New Question</h2>
           <Input name="title" style={{width: "50%", marginLeft:'25%', marginTop:"1%", zIndex: 1}} placeholder="What is it you need help with?" onChange={event => this.setState({title: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(),t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+              <Row>
+                  <br></br>
+              </Row>
           </div>
             <div>
           <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={10} placeholder="Describe Your issue." onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(), t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
             </div>
             <div>
+                <Row>
+                    <br></br>
+                </Row>
                 <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={1} placeholder="How much do you want to bounty in BSV?" onChange={event => this.setState({amount: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(), t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
             </div>
           {/*<TextArea name="code" rows={4} placeholder="Describe Your issue." onChange={event => setCode(event.target.value)}/>*/}
           {/*  <Button name="submit" type="default" htmlType="submit" value="Submit">Set Post</Button>*/}
           {/*</Form>*/}
-          <div style={{ marginLeft:'47%', zIndex: 1}}>
+          <div style={{ marginLeft:'25%', zIndex: 1}}>
+              <Row><br></br></Row>
             <MoneyButton
 
                 label={"Submit"}
@@ -93,8 +101,11 @@ export default class questionForm extends React.Component {
                   }]}
                 onPayment={this.handleOnPayment}
             />
-          </div>
+              <Row><br></br></Row><Row><br></br></Row><Row><br></br></Row><Row><br></br></Row>
+              <Row style={{ marginLeft:'25%'}}><img src={questions} width={"400"} height={"400"}/></Row>
+              <Row><br></br></Row><Row><br></br></Row><Row><br></br></Row><Row><br></br></Row><Row><br></br></Row><Row><br></br></Row>
 
+          </div>
         </>
     )
   }

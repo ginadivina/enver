@@ -33,7 +33,7 @@ function LandingPage() {
             </Carousel>
             </Content>
 
-        <Row style={{paddingTop: "30px"}}>
+        <Row style={{paddingTop: "50px"}}>
 
                 <div style={{ padding: '30px' }}>
                     <Row gutter={16}>
@@ -54,9 +54,10 @@ function LandingPage() {
                         </Col>
                     </Row>
                 </div>
-
+            <Row>
+                <br></br>
+            </Row>
         </Row>
-
         </Layout>
 
     )

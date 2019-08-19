@@ -11,7 +11,7 @@ import bitcoinsv from './bitcoin-sv-1.svg';
 import LandingPage from './LandingPage/LandingPage';
 import Answer from "./forms/Answer/Answer";
 
-const { Footer } = Layout;
+const { Footer, Content } = Layout;
 const OAUTH_IDENTIFIER = '116d2d894e5052b0394f45a865fb4d28';
 const OAUTH_REDIRECT_URI = 'http://localhost:3000/oauthCallback';
 
@@ -64,6 +64,7 @@ class App extends Component {
                           {login}
                       </Menu>
                   </nav>
+
                  {/*<Route path="/" component={LandingPage}/>*/}
                 <Route path="/home" component={LandingPage}/>
                 <Route path="/question/new" component={QuestionForm}/>
@@ -72,11 +73,14 @@ class App extends Component {
                 <Route path="/questions" component={main}/>
 
                 <Footer style={{ textAlign: 'center' }}>
-                    <Row>
+                    <Row><br></br></Row><Row><br></br></Row>
+                    <Row style={{ paddingTop: "50px", paddingBottom: "50px"}}>
                         Powered by BSV <img src={bitcoinsv} width={"100"} height={"50"}/>
                         ©2019 Created by Enver
                     </Row>
+                    <Row><br></br></Row><Row><br></br></Row>
                 </Footer>
+
             </div>
         </Router>
 
