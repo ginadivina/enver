@@ -36,23 +36,21 @@ export default class questionForm extends React.Component {
     renderTableData() {
 
         return this.state.questions.map((question, index) => {
-            console.log(question)
             const { body, code, date, payout, pinned, tags, title, username, __v, id} = question //destructuring
             {/*https://ant.design/components/comment/*/}
-            console.log(body, title, username, date, id)
             return (
                 <div >
                 <Comment
-                    style={{width: "100%"}}
+                    style={{width: "75%"}}
                     author={<a>{username}</a>}
                     avatar={
-                        <Avatar style={{ backgroundColor: this.state.color, verticalAlign: 'middle' }} size="large">
+                        <Avatar src={"http://flathash.com/" + username} size="large">
                             {username}
                         </Avatar>
                     }
                     content={
                         <p>
-                            <h3>{title}</h3>
+                            <h2>{title}</h2>
                             <p>{body}</p>
                         </p>
 
@@ -63,13 +61,13 @@ export default class questionForm extends React.Component {
                 /><Link to={'/answer/' + id}><Button type="primary" >Answer</Button></Link>
                 </div>
 
-
             )
         })
     }
+
     render() {
     return (
-        <div style={{width: "100%", paddingLeft: "35%", paddingTop: "3%"}}>
+        <div style={{width: "100%", paddingLeft: "5%", paddingBottom: "5%"}}>
             <table id='questions'>
                 <tbody>
                 {this.renderTableData()}

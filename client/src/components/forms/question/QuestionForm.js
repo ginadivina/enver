@@ -47,15 +47,12 @@ export default class questionForm extends React.Component {
       window.location = '/'
   }
 
-
-
-
   render () {
     const handleSubmit = (event) => {
       event.preventDefault();
         console.log(this.state.script.toString());
        let question = {t: this.state.title, u: this.state.user, b: this.state.body};
-       console.log(question)
+       console.log(question);
       let output = bsv.Script.buildSafeDataOut([namespace, JSON.stringify(question)]).toASM();
         this.setState({script: output});
         console.log(bsv.Script.buildSafeDataOut([output]).toString());
