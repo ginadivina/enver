@@ -5,6 +5,7 @@ import MoneyButton from '@moneybutton/react-money-button'
 import {MoneyButtonClient} from "@moneybutton/api-client";
 import Text from "antd/es/typography/Text";
 let bsv = require('bsv');
+const uuidv4 = require('uuid/v4');
 
 
 const {TextArea} = Input;
@@ -30,10 +31,13 @@ export default class questionForm extends React.Component {
     moneyButtonClient = new MoneyButtonClient(
         OAUTH_IDENTIFIER
     );
-    user = await moneyButtonClient.getIdentity();
-    console.log(user);
-    this.setState({user: user.id});
-    console.log(this.state.user)
+    try {
+        user = await moneyButtonClient.getIdentity();
+        console.log(user);
+        this.setState({user: user.id});
+    } catch (e) {
+        console.log(e)
+    }
 
   }
 
@@ -41,6 +45,7 @@ export default class questionForm extends React.Component {
       await sleep(4000);
       window.location = '/'
   }
+
 
 
 
@@ -62,10 +67,10 @@ export default class questionForm extends React.Component {
           <h1>New Question</h1>
           {/*<Form onSubmit={handleSubmit}>*/}
           <div>
-          <Input name="title" style={{width: "50%", marginLeft:'25%', marginTop:"1%", zIndex: 1}} placeholder="What is it you need help with?" onChange={event => this.setState({title: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+          <Input name="title" style={{width: "50%", marginLeft:'25%', marginTop:"1%", zIndex: 1}} placeholder="What is it you need help with?" onChange={event => this.setState({title: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(),t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
           </div>
             <div>
-          <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={10} placeholder="Describe Your issue." onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+          <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={10} placeholder="Describe Your issue." onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(), t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
             </div>
           {/*<TextArea name="code" rows={4} placeholder="Describe Your issue." onChange={event => setCode(event.target.value)}/>*/}
           {/*  <Button name="submit" type="default" htmlType="submit" value="Submit">Set Post</Button>*/}

@@ -1,13 +1,17 @@
 import React, { Component} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import OathCallback from "./OathCallback";
-import {Button, Layout, Menu} from 'antd';
+import {Button, Layout, Menu, Row, Col} from 'antd';
 import {Link} from 'react-router-dom';
 import {MoneyButtonClient} from "@moneybutton/api-client";
 import QuestionForm from "./forms/question/QuestionForm";
+import ReactSVG from 'react-svg'
+import main from "./main";
+import SVG from 'react-inlinesvg';
 import NavBar from './NavBar/NavBar';
 import LandingPage from './LandingPage/LandingPage';
 import Stepper from "./Stepper"
+import Answer from "./forms/Answer/Answer";
 // const cors = require('cors');
 // const express = require('express');
 // const responseTime = require('response-time');
@@ -63,9 +67,9 @@ class App extends Component {
         }
         let login;
         if(!this.state.loggedIn){
-            login =  <Menu.Item key="3" onClick={linkWithMoneyButton}>Log in</Menu.Item>
+            login =  <Menu.Item key="4" onClick={linkWithMoneyButton}>Log in</Menu.Item>
         } else {
-            login = <Menu.Item key="3" >Log Off</Menu.Item>
+            login = <Menu.Item key="4" >Log Off</Menu.Item>
         }
 
 
@@ -74,26 +78,41 @@ class App extends Component {
 
 
 
-      <Router>
-          <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-              <div className="logo" />
-              <Menu theme="dark"
-                  mode="horizontal"
-                  defaultSelectedKeys={['1']}
-                  style={{ lineHeight: '64px' }}>
-                  <Menu.Item key="1"><Link to={'/'}/>Home</Menu.Item>
-                  <Menu.Item key="2" ><Link to={'/question/new'}/>Ask</Menu.Item>
-                  {/*/!*Need to set disable when logged in*!/*/}
-                  {login}
-              </Menu>
-          </Header>
-        {/* <Route path="/" component={}> */}
-        <Route path="/question/new" component={QuestionForm}/>
 
+
+
+      <Router>
+          <Row>
+              <Row span={6}>
+
+                  <Header style={{ background: '#ecfdff', zIndex: '1'}}>
+                      <div className="logo" />
+                      <Menu
+                          mode="horizontal"
+                          defaultSelectedKeys={['1']}
+                          style={{ background: '#ecfdff', lineHeight: '64px' }}>
+                          <Menu.Item > </Menu.Item>
+
+                          <Menu.Item key="1"><Link to={'/home'}/>Home</Menu.Item>
+                          <Menu.Item key="2"><Link to={'/questions'}/>Questions</Menu.Item>
+                          <Menu.Item key="3" ><Link to={'/question/new'}/>Ask</Menu.Item>
+                          {/*/!*Need to set disable when logged in*!/*/}
+                          {login}
+                      </Menu>
+                  </Header>
+              </Row>
+
+
+          </Row>
+        {/* <Route path="/" component={}> */}
+        <Route path="/home" component={LandingPage}/>
+        <Route path="/question/new" component={QuestionForm}/>
+        <Route path="/answer/:id" component={Answer}/>
         <Route path="/oauthCallback" component={OathCallback}/>
+        <Route path="/questions" component={main}/>
 
       </Router>
-      <LandingPage/>
+
 
 
       </>
