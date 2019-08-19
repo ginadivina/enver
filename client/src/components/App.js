@@ -1,4 +1,5 @@
 import React, { Component} from "react";
+import { ReactComponent as Logo } from './asksv-logo.svg';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import OathCallback from "./OathCallback";
 import {Button, Layout, Menu, Row, Col} from 'antd';
@@ -16,36 +17,15 @@ import Answer from "./forms/Answer/Answer";
 // const express = require('express');
 // const responseTime = require('response-time');
 // const session = require('express-session');
-const { Header } = Layout;
-const OAUTH_IDENTIFIER = '116d2d894e5052b0394f45a865fb4d28'
-const OAUTH_REDIRECT_URI = 'http://localhost:3000/oauthCallback'
-/**
- *
- */
-
-
-
-
-/**
- *
- */
-
-
-/**
- *
- */
+const { Header, Content } = Layout;
+const OAUTH_IDENTIFIER = '116d2d894e5052b0394f45a865fb4d28';
+const OAUTH_REDIRECT_URI = 'http://localhost:3000/oauthCallback';
 
 let moneyButtonClient = null;
 class App extends Component {
-    /**
-     *
-     */
     state = {
         loggedIn : false
-    }
-
-
-
+    };
 
   render () {
         let linkWithMoneyButton = () => {
@@ -74,48 +54,35 @@ class App extends Component {
 
 
     return(
-        <>
-
-
-
-
-
-
-      <Router>
-          <Row>
-              <Row span={6}>
-
-                  <Header style={{ background: '#ecfdff', zIndex: '1'}}>
-                      <div className="logo" />
+        <Router>
+            <div>
+                  <nav>
+                      <div className={"logo"}>
+                          <Logo />
+                      </div>
                       <Menu
                           mode="horizontal"
                           defaultSelectedKeys={['1']}
-                          style={{ background: '#ecfdff', lineHeight: '64px' }}>
-                          <Menu.Item > </Menu.Item>
+                          style={{ lineHeight: '64px' }}
+                        >
 
+                          <Menu.Item > </Menu.Item>
                           <Menu.Item key="1"><Link to={'/home'}/>Home</Menu.Item>
                           <Menu.Item key="2"><Link to={'/questions'}/>Questions</Menu.Item>
                           <Menu.Item key="3" ><Link to={'/question/new'}/>Ask</Menu.Item>
                           {/*/!*Need to set disable when logged in*!/*/}
                           {login}
                       </Menu>
-                  </Header>
-              </Row>
+                  </nav>
+                {/* <Route path="/" component={}> */}
+                <Route path="/home" component={LandingPage}/>
+                <Route path="/question/new" component={QuestionForm}/>
+                <Route path="/answer/:id" component={Answer}/>
+                <Route path="/oauthCallback" component={OathCallback}/>
+                <Route path="/questions" component={main}/>
+            </div>
+        </Router>
 
-
-          </Row>
-        {/* <Route path="/" component={}> */}
-        <Route path="/home" component={LandingPage}/>
-        <Route path="/question/new" component={QuestionForm}/>
-        <Route path="/answer/:id" component={Answer}/>
-        <Route path="/oauthCallback" component={OathCallback}/>
-        <Route path="/questions" component={main}/>
-
-      </Router>
-
-
-
-      </>
     )
   }
 }

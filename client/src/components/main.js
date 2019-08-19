@@ -11,7 +11,6 @@ export default class questionForm extends React.Component {
     state = {questions: []};
 
 
-
     async getAll () {
         try {
             this.setState({questions: [{i: "1",t:"How do I become a better Person?", u:"6666", b:"I have been feeling worthless lately and I dont know how to get more people to like me."}, {i: "2", t:"How do I become a better Person?", u:"6666", b:"I have been feeling worthless lately and I dont know how to get more people to like me."},{i:"3",t:"How do I become a better Person?", u:"6666", b:"I have been feeling worthless lately and I dont know how to get more people to like me."} ]});

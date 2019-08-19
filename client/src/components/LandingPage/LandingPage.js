@@ -1,40 +1,43 @@
 import React from 'react'
-import {Carousel,Card, Col, Row } from 'antd';
+import '../../styles.css'
+import {Carousel, Card, Col, Row, Layout } from 'antd';
+const { Content } = Layout;
 
 function LandingPage() {
 
     return (
 
-    <div>
-        <Row style={{zIndex: -1}}>
-            <Col style={{ background: '#ecfdff', minHeight: "500px"}}>
-            <Carousel dots={false} autoplay>
+        <Layout>
+
+            <Content
+                style={{
+                    margin: 0,
+                    minHeight: 500,
+                }}>
+            <Carousel autoplay>
                 <div>
-                    <h1>Ask
-                        Answer
-                        Earn
-                    </h1>
-                    <p>Bounty your question<br/>
-                        Pick The best answer<br/>
-                        Get paid for your knowledge<br/></p>
+                    <h3>
+                        Ask, answer, earn
+                    </h3>
                 </div>
                 <div>
-                    <h3>2</h3>
+                    <h3>
+                        Ask, answer, earn
+                    </h3>
                 </div>
                 <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
+                    <h3>
+                        Ask, answer, earn
+                    </h3>
                 </div>
             </Carousel>
-            </Col>
-        </Row>
-        <Row style={{paddingTop: "30px",  paddingRight: "10%"}}>
-            <Col>
+            </Content>
+
+        <Row style={{paddingTop: "30px"}}>
+
                 <div style={{ padding: '30px' }}>
                     <Row gutter={16}>
-                        <Col span={8} style={{paddingLeft: "10%"}}>
+                        <Col span={8}>
                             <Card title="Card title" bordered={false}>
                                 Card content
                             </Card>
@@ -44,16 +47,17 @@ function LandingPage() {
                                 Card content
                             </Card>
                         </Col>
-                        <Col span={8} style={{paddingRight: "10%"}}>
+                        <Col span={8}>
                             <Card title="Card title" bordered={false}>
                                 Card content
                             </Card>
                         </Col>
                     </Row>
                 </div>
-            </Col>
+
         </Row>
-    </div>
+
+        </Layout>
 
     )
 }
