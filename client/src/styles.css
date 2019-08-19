@@ -1,10 +1,18 @@
 
-
-.ant-carousel .slick-slide {
+carousel1 {
     text-align: center;
     line-height: 50vh;
     overflow: hidden;
     background: url("https://gw.alipayobjects.com/zos/rmsportal/ZsWYzLOItgeaWDSsXdZd.svg") no-repeat;
+    background-position:center;
+    background-size:contain;
+}
+
+carousel2 {
+    text-align: center;
+    line-height: 50vh;
+    overflow: hidden;
+    background: url("./undraw_digital_currency_qpak.svg") no-repeat;
     background-position:center;
     background-size:contain;
 }

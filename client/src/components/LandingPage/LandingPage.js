@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../styles.css'
 import {Carousel, Card, Col, Row, Layout } from 'antd';
+
 const { Content } = Layout;
 
 function LandingPage() {
@@ -15,26 +16,21 @@ function LandingPage() {
                     minHeight: 500,
                 }}>
             <Carousel autoplay>
-                <div>
+                <carousel1>
                     <h3>
                         Ask, answer, earn
                     </h3>
-                </div>
-                <div>
+                </carousel1>
+
+                <carousel2>
                     <h3>
-                        Ask, answer, earn
+                        <br></br>
                     </h3>
-                </div>
-                <div>
-                    <h3>
-                        Ask, answer, earn
-                    </h3>
-                </div>
+                </carousel2>
             </Carousel>
             </Content>
 
         <Row style={{paddingTop: "50px"}}>
-
                 <div style={{ padding: '30px' }}>
                     <Row gutter={16}>
                         <Col span={8}>
