@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Avatar from "antd/es/avatar";
 import Comment from "antd/es/comment";
-import {Button} from "antd";
+import {Button, Row} from "antd";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import {Link} from 'react-router-dom';
 import Answer from "./forms/Answer/Answer";
@@ -68,11 +68,15 @@ export default class questionForm extends React.Component {
     render() {
     return (
         <div style={{width: "100%", paddingLeft: "5%", paddingBottom: "5%"}}>
+            <Row><br></br></Row><Row><br></br></Row><Row><br></br></Row><Row><br></br></Row>
             <table id='questions'>
                 <tbody>
                 {this.renderTableData()}
                 </tbody>
             </table>
+            <Row><br></br></Row><Row><br></br></Row><Row><br></br></Row><Row><br></br></Row>
+            <Row><br></br></Row><Row><br></br></Row><Row><br></br></Row><Row><br></br></Row>
+
         </div>
     )
     }
