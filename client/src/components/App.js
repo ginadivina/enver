@@ -1,5 +1,4 @@
 import React, { Component} from "react";
-import { ReactComponent as Logo } from './asksv-logo.svg';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import OathCallback from "./OathCallback";
 import {Button, Layout, Menu, Row, Col} from 'antd';
@@ -8,8 +7,7 @@ import {MoneyButtonClient} from "@moneybutton/api-client";
 import QuestionForm from "./forms/question/QuestionForm";
 import ReactSVG from 'react-svg'
 import main from "./main";
-import SVG from 'react-inlinesvg';
-import NavBar from './NavBar/NavBar';
+import logo from './asksv-logo.svg';
 import LandingPage from './LandingPage/LandingPage';
 import Stepper from "./Stepper"
 import Answer from "./forms/Answer/Answer";
@@ -57,16 +55,13 @@ class App extends Component {
         <Router>
             <div>
                   <nav>
-                      <div className={"logo"}>
-                          <Logo />
-                      </div>
                       <Menu
                           mode="horizontal"
                           defaultSelectedKeys={['1']}
                           style={{ lineHeight: '64px' }}
                         >
 
-                          <Menu.Item > </Menu.Item>
+                          <Menu.Item ><img src={logo} width={"100"} height={"50"}/></Menu.Item>
                           <Menu.Item key="1"><Link to={'/home'}/>Home</Menu.Item>
                           <Menu.Item key="2"><Link to={'/questions'}/>Questions</Menu.Item>
                           <Menu.Item key="3" ><Link to={'/question/new'}/>Ask</Menu.Item>
