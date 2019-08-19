@@ -38,18 +38,18 @@ function LandingPage() {
                 <div style={{ padding: '30px' }}>
                     <Row gutter={16}>
                         <Col span={8}>
-                            <Card title="Card title" bordered={false}>
-                                Card content
+                            <Card title="Public Q&A" bordered={true}>
+                                AskSV is a community to ask questions on whatever topic you need, and get answers from experts from within the community.
                             </Card>
                         </Col>
                         <Col span={8}>
-                            <Card title="Card title" bordered={false}>
-                                Card content
+                            <Card title="Answer" bordered={true}>
+                                Experts like you can help others on any topic at all. From programming and code reviews, to
                             </Card>
                         </Col>
                         <Col span={8}>
-                            <Card title="Card title" bordered={false}>
-                                Card content
+                            <Card title="Earn" bordered={true}>
+                                Questioners set the price of their question and get to pick the best answer.
                             </Card>
                         </Col>
                     </Row>

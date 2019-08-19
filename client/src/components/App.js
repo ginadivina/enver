@@ -1,21 +1,17 @@
 import React, { Component} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import OathCallback from "./OathCallback";
-import {Button, Layout, Menu, Row, Col} from 'antd';
+import { Layout, Menu, Row } from 'antd';
 import {Link} from 'react-router-dom';
 import {MoneyButtonClient} from "@moneybutton/api-client";
 import QuestionForm from "./forms/question/QuestionForm";
-import ReactSVG from 'react-svg'
 import main from "./main";
 import logo from './asksv-logo.svg';
+import bitcoinsv from './bitcoin-sv-1.svg';
 import LandingPage from './LandingPage/LandingPage';
-import Stepper from "./Stepper"
 import Answer from "./forms/Answer/Answer";
-// const cors = require('cors');
-// const express = require('express');
-// const responseTime = require('response-time');
-// const session = require('express-session');
-const { Header, Content } = Layout;
+
+const { Footer } = Layout;
 const OAUTH_IDENTIFIER = '116d2d894e5052b0394f45a865fb4d28';
 const OAUTH_REDIRECT_URI = 'http://localhost:3000/oauthCallback';
 
@@ -60,7 +56,6 @@ class App extends Component {
                           defaultSelectedKeys={['1']}
                           style={{ lineHeight: '64px' }}
                         >
-
                           <Menu.Item ><img src={logo} width={"100"} height={"50"}/></Menu.Item>
                           <Menu.Item key="1"><Link to={'/home'}/>Home</Menu.Item>
                           <Menu.Item key="2"><Link to={'/questions'}/>Questions</Menu.Item>
@@ -75,6 +70,13 @@ class App extends Component {
                 <Route path="/answer/:id" component={Answer}/>
                 <Route path="/oauthCallback" component={OathCallback}/>
                 <Route path="/questions" component={main}/>
+
+                <Footer style={{ textAlign: 'center' }}>
+                    <Row>
+                        Powered by BSV <img src={bitcoinsv} width={"100"} height={"50"}/>
+                        ©2019 Created by Enver
+                    </Row>
+                </Footer>
             </div>
         </Router>
 
