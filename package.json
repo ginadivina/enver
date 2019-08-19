@@ -20,6 +20,8 @@
     "neonplanaria": "^0.0.38",
     "node-jq": "1.5.0",
     "nodemon": "^1.19.1",
+    "react-inlinesvg": "^1.1.5",
+    "react-svg": "^10.0.18",
     "uuid": "^3.3.2",
     "validator": "^11.1.0",
     "yarn": "^1.17.3"

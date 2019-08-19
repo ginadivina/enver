@@ -119,6 +119,7 @@ export default class questionForm extends React.Component {
                         onPayment={this.handleOnPayment}
                     />
                 </div>
+                <img src={"https://gw.alipayobjects.com/zos/rmsportal/ZsWYzLOItgeaWDSsXdZd.svg"} width={'100%'} style={{zIndex:'-1', position:'absolute'}} alt={null}/>
 
             </>
         )
