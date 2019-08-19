@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Button, Input, Form } from "antd";
 import { connect } from "react-redux";
+import axios from "axios";
 import MoneyButton from '@moneybutton/react-money-button'
 import {MoneyButtonClient} from "@moneybutton/api-client";
 
@@ -8,14 +9,13 @@ import Text from "antd/es/typography/Text";
 import Avatar from "antd/es/avatar";
 import Comment from "antd/es/comment";
 let bsv = require('bsv');
-
-const axios = require('axios');
+const uuidv4 = require('uuid/v4');
 const {TextArea} = Input;
 const OAUTH_IDENTIFIER = '116d2d894e5052b0394f45a865fb4d28';
 
 let moneyButtonClient = null;
 let user = null;
-let namespace = '1HUqKEetMXpByShDnybNNGBhZMcTjtE6RG';
+let namespace = '1DxZKEejyfuLP7f6p5ockEmVDZu4XPmhhL';
 
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -24,16 +24,20 @@ function sleep (time) {
 export default class questionForm extends React.Component {
 
     state = {
+        question: {},
         title: "",
         body: "",
         user: "",
-        script: {}
-    }
-    ;
+        script: {},
+
+    };
+
     async componentDidMount () {
         moneyButtonClient = new MoneyButtonClient(
             OAUTH_IDENTIFIER
         );
+        console.log(this.props.match.params.id)
+        this.getById();
         try {
             user = await moneyButtonClient.getIdentity();
             console.log(user);
@@ -42,6 +46,17 @@ export default class questionForm extends React.Component {
             console.log(e)
         }
 
+    }
+
+    async getById () {
+        try {
+            const response = await axios.get('/api/question/' + this.props.match.params.id);
+            console.log(response.data);
+            this.setState({question: response.data[0]});
+            console.log(this.state.question.body)
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     async handleOnPayment () {
@@ -76,27 +91,27 @@ export default class questionForm extends React.Component {
                     author={<a>author</a>}
                     avatar={
                         <Avatar style={{ backgroundColor: this.state.color, verticalAlign: 'middle' }} size="large">
-                            author
+                            {this.state.question.username}
                         </Avatar>
                     }
                     content={
                         <p>
-                            <h3>title</h3>
-                            <p>body</p>
+                            <h3>{this.state.question.title}</h3>
+                            <p>{this.state.question.body}</p>
                         </p>
 
                     }
                     datetime={
-                        "Some Time ago"
+                        this.state.question.date
                     }
                 /></div>
 
                 {/*<Form onSubmit={handleSubmit}>*/}
                 <div>
-                    <Input name="title" style={{width: "50%", marginLeft:'25%', marginTop:"1%", zIndex: 1}} placeholder="A simple description of your answer" onChange={event => this.setState({title: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+                    <Input name="title" style={{width: "50%", marginLeft:'25%', marginTop:"1%", zIndex: 1}} placeholder="A simple description of your answer" onChange={event => this.setState({title: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(), t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
                 </div>
                 <div>
-                    <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={10} placeholder="In detail answer the question if your answer is selected then you will be rewarded with the bounty!" onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+                    <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={10} placeholder="In detail answer the question if your answer is selected then you will be rewarded with the bounty!" onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(), t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
                 </div>
                 {/*<TextArea name="code" rows={4} placeholder="Describe Your issue." onChange={event => setCode(event.target.value)}/>*/}
                 {/*  <Button name="submit" type="default" htmlType="submit" value="Submit">Set Post</Button>*/}
@@ -109,13 +124,8 @@ export default class questionForm extends React.Component {
                             'userId':this.state.u,
                             'script': this.state.script,
                             'amount': "0.001",
-                            'currency': "USD"
-                        },
-                            {
-                                'paymail': "9552@moneybutton.com",
-                                'amount': "0.01",
-                                'currency': "USD"
-                            }]}
+                            'currency': "BSV"
+                        }]}
                         onPayment={this.handleOnPayment}
                     />
                 </div>

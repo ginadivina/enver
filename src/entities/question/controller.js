@@ -31,11 +31,31 @@ const getAll = () => {
 
 };
 
+const getById = (id) => {
+
+    return new Promise((resolve, reject) => {
+
+        Question
+            .find({id:id})
+            .exec((error, result) => {
+                console.log(result);
+                if (error) { console.log(error); reject(error); }
+                else if (!result) reject('Question not found');
+                else {
+                    resolve(result);
+                }
+            })
+
+    });
+
+};
+
 const createQuestion = (question) => {
 
     return new Promise((resolve, reject) => {
 
         const newQuestion = new Question({
+            id: "12j3hk12jh3",
             username: 'testuser1',
             date: Date.now(),
             title: question.title,
@@ -64,5 +84,6 @@ const createQuestion = (question) => {
 
 module.exports = {
     getAll,
+    getById,
     createQuestion,
 };

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const questionSchema = mongoose.Schema({
     question_id: mongoose.Schema.ObjectId,
     // forum_id: { type: mongoose.Schema.ObjectId, ref: 'forum' },
+    id: String,
     username: { type: String, ref: 'user' },
     date: Date,
     title: String,

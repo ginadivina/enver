@@ -6,44 +6,61 @@ import {Button} from "antd";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import {Link} from 'react-router-dom';
 import Answer from "./forms/Answer/Answer";
+import {MoneyButtonClient} from "@moneybutton/api-client";
 export default class questionForm extends React.Component {
 
     state = {questions: []};
 
+    async componentDidMount () {
+
+        this.getAll()
+
+    }
+
 
     async getAll () {
         try {
-            this.setState({questions: [{i: "1",t:"How do I become a better Person?", u:"6666", b:"I have been feeling worthless lately and I dont know how to get more people to like me."}, {i: "2", t:"How do I become a better Person?", u:"6666", b:"I have been feeling worthless lately and I dont know how to get more people to like me."},{i:"3",t:"How do I become a better Person?", u:"6666", b:"I have been feeling worthless lately and I dont know how to get more people to like me."} ]});
+            const response = await axios.get('/api/question/getAll');
+            console.log(response);
+            let questions = [];
+            response.data.forEach(function (data) {
+                questions.push(data)
+            });
 
+            console.log(questions);
+            this.setState({questions: questions});
         } catch (error) {
             console.error(error);
         }
     }
     renderTableData() {
+
         return this.state.questions.map((question, index) => {
-            const { t, u, b,  i } = question //destructuring
+            console.log(question)
+            const { body, code, date, payout, pinned, tags, title, username, __v, id} = question //destructuring
             {/*https://ant.design/components/comment/*/}
+            console.log(body, title, username, date, id)
             return (
                 <div >
                 <Comment
                     style={{width: "100%"}}
-                    author={<a>{u}</a>}
+                    author={<a>{username}</a>}
                     avatar={
                         <Avatar style={{ backgroundColor: this.state.color, verticalAlign: 'middle' }} size="large">
-                            {u}
+                            {username}
                         </Avatar>
                     }
                     content={
                         <p>
-                            <h3>{t}</h3>
-                            <p>{b}</p>
+                            <h3>{title}</h3>
+                            <p>{body}</p>
                         </p>
 
                     }
                     datetime={
-                        "Some Time ago"
+                        date
                     }
-                /><Link to={'/answer/' + i}><Button type="primary" >Answer</Button></Link>
+                /><Link to={'/answer/' + id}><Button type="primary" >Answer</Button></Link>
                 </div>
 
 
@@ -51,7 +68,6 @@ export default class questionForm extends React.Component {
         })
     }
     render() {
-        this.getAll();
     return (
         <div style={{width: "100%", paddingLeft: "35%", paddingTop: "3%"}}>
             <table id='questions'>

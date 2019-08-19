@@ -40,7 +40,7 @@ planarium.start({
 
 planaria.start({
     filter: {
-        "from": 60000,
+        "from": 596160,
         "q": {
             "find": {"out.s2": "1HUqKEetMXpByShDnybNNGBhZMcTjtE6RG"}
         }
@@ -52,9 +52,12 @@ planaria.start({
 
     onblock: async function (e) {
         tx = JSON.parse(e.tx);
+        console.log(tx)
         tx.forEach(function (question) {
             data = JSON.parse(question.out[0].s3);
+            console.log(data)
             confirmed = new Question({
+                id: data.i,
                 username: data.u,
                 date: Date.now(),
                 title: data.t,

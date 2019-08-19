@@ -1,4 +1,5 @@
 const getAll = require('./controller').getAll;
+const getById = require('./controller').getById;
 const createQuestion = require('./controller').createQuestion;
 
 const questionRoutes = (app) => {
@@ -17,10 +18,11 @@ const questionRoutes = (app) => {
         );
     });
 
-    app.get('/api/question/:question', (req, res) => {
-        res.send(
-            `question: question`,
-        );
+    app.get('/api/question/:id', (req, res) => {
+        getById(req.params.id).then(
+            result => { res.send(result); },
+                error => { res.send({ error }); }
+        )
     });
 };
 

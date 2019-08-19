@@ -2,6 +2,7 @@ const discussions = [
     {
         // 'forum_id': '58c23d2efce8810b6f20b0b3',
         // 'user_id': '58c242a96ba2030d170f86f9',
+        'id': '1234',
         'username': 'Georgina',
         'date': 1486450269704,
         'title': 'How do you get the Code Runner extension in Visual Studio Code to use the selected Python interpreter?',
@@ -14,6 +15,7 @@ const discussions = [
     {
         // 'forum_id': '58c23d2efce8810b6f20b0b3',
         // 'user_id': '58c242e2fb2e150d2570e02b',
+        'id': '567794',
         'username': 'Harry',
         'date': 1486450269704,
         'title': 'ValueError: The truth value of an array… from dict key comparison\n',
@@ -26,6 +28,7 @@ const discussions = [
     {
         // 'forum_id': '58c23d2efce8810b6f20b0b3',
         // 'user_id': '58c242e2fb2e150d2570e02b',
+        'id': '291379',
         'username': 'Bryce',
         'date': 1486450269704,
         'title': 'Annotation processors must be explicitly declared now. The following dependencies on the compile classpath?',
