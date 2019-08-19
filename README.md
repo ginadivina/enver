@@ -6,6 +6,9 @@ Dependencies:
 ### `Node 10+`
 To get started:
 
+Install bitbus globally
+### `npm install -g bitbus`
+
 Install nodemon if you dont already have it.
 ### `npm i nodemon - g`
 Install MongoDB locally
