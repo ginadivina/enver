@@ -61,7 +61,7 @@ export default class questionForm extends React.Component {
 
     async handleOnPayment () {
         await sleep(4000);
-        window.location = '/'
+        window.location = '/questions'
     }
 
 
@@ -123,7 +123,7 @@ export default class questionForm extends React.Component {
                         outputs={[{
                             'userId':this.state.u,
                             'script': this.state.script,
-                            'amount': "0.001",
+                            'amount': "0",
                             'currency': "BSV"
                         }]}
                         onPayment={this.handleOnPayment}
