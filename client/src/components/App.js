@@ -64,7 +64,7 @@ class App extends Component {
                           {login}
                       </Menu>
                   </nav>
-                 <Route path="/" component={LandingPage}/>
+                 {/*<Route path="/" component={LandingPage}/>*/}
                 <Route path="/home" component={LandingPage}/>
                 <Route path="/question/new" component={QuestionForm}/>
                 <Route path="/answer/:id" component={Answer}/>
