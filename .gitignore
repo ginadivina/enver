@@ -26,3 +26,7 @@ yarn.lock
 \.idea/
 
 client/node_modules/
+
+bus/
+
+tape.txt
