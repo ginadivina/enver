@@ -1,5 +1,6 @@
 const {planaria, planarium} = require('neonplanaria');
 const bitquery = require('bitquery');
+const MongoClient = require('mongodb')
 const mongoose = require('mongoose');
 const mongo_db = require('./database.js');
 
@@ -9,45 +10,25 @@ const tx = mongoose.model('tx', mongoose.Schema({
     tx: String
 }));
 
-planaria.start({
-    filter: {
-        "from": 566470,
-        "q": {
-            "find": {"out.s1": "1LtyME6b5AnMopQrBPLk4FGN8UBuhxKqr"},
-        },
-        "limit": 10,
-    },
-    onstart: function (e) {
-        console.log('yeenaw', e);
-        return new Promise(async function (resolve, reject) {
-            if (e.tape.self.start) {
-                mongo_db.collection("c").deleteMany({
-                    "blk.i": {"$gt": e.tape.self.end}
-                }).then(resolve)
-            } else {
-                resolve();
-            }
-        })
-    },
-    onmempool: async function (e) {
-        console.log('yeehaw', e.tx);
-        let test = {
-            tx: "123"
-        };
-        await tx.insertMany(test)
-    },
-    onblock: async function (e) {
-        console.log('yeeeeeehaw', e.tx);
-        await mongo_db.collection("c").insertMany(e.tx)
-    }
-});
-
+const connect = function(cb) {
+    MongoClient.connect("mongodb://localhost:27017", {useNewUrlParser: true}, function(err, client) {
+        if (err) {
+            console.log("retrying...");
+            setTimeout(function() {
+                connect(cb);
+            }, 1000)
+        } else {
+            db = client.db("enverDB");
+            cb();
+        }
+    })
+}
 
 planarium.start({
-    name: "EnverDB",
+    name: "planaria",
     port: 5001,
     onstart: async function() {
-        let db = await bitquery.init({ url: "mongodb://127.0.0.1:27017", address: "enverDB" });
+        let db = await bitquery.init({ url: "mongodb://localhost:27017", address: "enverDB" });
         return { db: db };
     },
     onquery: function(e) {
@@ -62,4 +43,42 @@ planarium.start({
         }
     }
 })
+
+planaria.start({
+    filter: {
+        "from": 60000,
+        "q": {
+            "find": {"out.s1": "1LtyME6b5AnMopQrBPLk4FGN8UBuhxKqrn"},
+            "project": { "out.s2": 1, "out.s3": 1 }
+        },
+        "limit": 10
+    },
+    onmempool: async function (e) {
+        await db.collection("u").insertMany([e.tx])
+    },
+    onblock: async function (e) {
+        await db.collection("c").insertMany(e.tx)
+    },
+    onstart: function (e) {
+        return new Promise(async function (resolve, reject) {
+            // if (!e.tape.self.start) {
+            //
+            // }
+            connect(function() {
+                if (e.tape.self.start) {
+                    db.collection("c").deleteMany({
+                        "blk.i": {"$gt": e.tape.self.end}
+                    }).then(resolve)
+                } else {
+                    resolve();
+                }
+            })
+        })
+    }
+});
+
+
+
+
+
 
