@@ -38,5 +38,9 @@
 h3 {
     font-family: 'Raleway', sans-serif;
     font-size: calc(5em + 1vw);
+}
 
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(0.5em + 1vw);
 }
