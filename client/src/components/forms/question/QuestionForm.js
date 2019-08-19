@@ -24,6 +24,7 @@ export default class questionForm extends React.Component {
       title: "",
       body: "",
       user: "",
+      amount: "",
       script: {}
   }
   ;
@@ -72,6 +73,9 @@ export default class questionForm extends React.Component {
             <div>
           <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={10} placeholder="Describe Your issue." onChange={event => this.setState({body: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(), t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
             </div>
+            <div>
+                <TextArea name="body" style={{width: "50%", marginLeft:'25%', zIndex: 1}} rows={1} placeholder="How much do you want to bounty in BSV?" onChange={event => this.setState({amount: event.target.value, script: bsv.Script.buildSafeDataOut([namespace, JSON.stringify( {i: uuidv4(), t: this.state.title, u: this.state.user, b: this.state.body})]).toASM()})}/>
+            </div>
           {/*<TextArea name="code" rows={4} placeholder="Describe Your issue." onChange={event => setCode(event.target.value)}/>*/}
           {/*  <Button name="submit" type="default" htmlType="submit" value="Submit">Set Post</Button>*/}
           {/*</Form>*/}
@@ -82,13 +86,13 @@ export default class questionForm extends React.Component {
                 outputs={[{
                   'userId':this.state.u,
                   'script': this.state.script,
-                  'amount': "0.001",
-                  'currency': "USD"
+                  'amount': "0.00001",
+                  'currency': "BSV"
                 },
                   {
                     'paymail': "9552@moneybutton.com",
-                    'amount': "0.01",
-                    'currency': "USD"
+                    'amount': this.state.amount ? this.state.amount : "0.0014",
+                    'currency': "BSV"
                   }]}
                 onPayment={this.handleOnPayment}
             />

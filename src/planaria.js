@@ -51,11 +51,10 @@ planaria.start({
     },
 
     onblock: async function (e) {
-        tx = JSON.parse(e.tx);
-        console.log(tx)
-        tx.forEach(function (question) {
+        console.log("transation" + e.tx)
+        e.tx.forEach(function (question) {
             data = JSON.parse(question.out[0].s3);
-            console.log(data)
+            console.log("data" + data)
             confirmed = new Question({
                 id: data.i,
                 username: data.u,
