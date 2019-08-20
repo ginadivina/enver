@@ -1,19 +1,18 @@
-var appRoot = process.cwd();
+// entities/question/controller.js
+
+let appRoot = process.cwd();
 const Question = require('./model');
 const mockQuestions = require(appRoot + '/src/mock/questions.js');
 
-Question.deleteMany({}, function(error, result) {
-
-    if (error) { console.log(error) }
-
-    Question.insertMany(mockQuestions, function (error, result) {
+// Populate the question collection with mock data
+mockQuestions.forEach(function(question) {
+    Question.findOneAndUpdate(question, question, { upsert: true }, function (error, result) {
         if (error) { console.log(error) }
     });
-
 });
 
 const getAll = () => {
-
+    // Find all questions in DB
     return new Promise((resolve, reject) => {
 
         Question
@@ -51,7 +50,7 @@ const getById = (id) => {
 };
 
 const createQuestion = (question) => {
-
+    // Save new question to DB
     return new Promise((resolve, reject) => {
 
         const newQuestion = new Question({
