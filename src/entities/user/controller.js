@@ -1,15 +1,17 @@
+// entities/user/controller.js
+
 var appRoot = process.cwd();
 const User = require('./model');
 const mockUsers = require(appRoot + '/src/mock/users.js');
 
-User.deleteMany({}, function(error, result) {
-    if (error) { console.log(error) }
-    User.insertMany(mockUsers, function (error, result) {
+// Populate the user collection with mock data
+mockUsers.forEach(function(user) {
+    User.findOneAndUpdate(user, user, { upsert: true }, function (error, result) {
         if (error) { console.log(error) }
     });
 });
 
-
+// Get user information by username
 const getUser = (username) => {
     return new Promise((resolve, reject) => {
         User
