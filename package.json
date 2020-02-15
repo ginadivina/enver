@@ -24,7 +24,7 @@
     "react-svg": "^10.0.18",
     "uuid": "^3.3.2",
     "validator": "^11.1.0",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"
